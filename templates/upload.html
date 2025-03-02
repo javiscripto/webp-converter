@@ -1,0 +1,25 @@
+{% extends "base.html" %} 
+{% block title %}Upload{% endblock %} 
+{% block content %}
+<h1>webp converter</h1>
+{{ mensaje }}
+<p>formatos permitidos: png, jpg, jpeg</p>
+<form
+    id="upload-form"
+  action="{{ url_for('index') }}"
+  method="POST"
+  enctype="multipart/form-data"
+>
+<label for="qualityImput">Calidad(default: 75)</label>
+<div>
+  <input id="qualityImput" type="range" name="quality" min="20" max="100" value="70" />
+  <span id="qualityValue"></span>
+</div>
+
+  <input id="fileInput" type="file" name="file" required />
+  <button type="submit">Subir</button>
+</form>
+<div class="loader"></div>
+
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+{% endblock %}
