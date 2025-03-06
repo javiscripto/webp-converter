@@ -3,6 +3,7 @@ from PIL import Image
 from werkzeug.utils import secure_filename
 import io
 import os
+import vercel_wsgi
 
 
 app= Flask(__name__)
@@ -51,4 +52,4 @@ if __name__ == "__main__":
 
 
 def handler(event, context):
-    return app(event, context)
+    return vercel_wsgi.handle_request(app, event, context)
